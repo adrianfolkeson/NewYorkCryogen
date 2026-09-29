@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DotsMenu } from "@/components/DotsMenu";
+import { CategoryNav } from "@/components/CategoryNav";
 import { site } from "@/lib/content";
 
 export function SiteHeader() {
@@ -14,10 +14,10 @@ export function SiteHeader() {
             <span className="wordmark__name">New York Cryogen</span>
             <span className="wordmark__region">Sverige</span>
           </Link>
+          <CategoryNav />
           <Link href="/#kontakt" className="btn btn--small topbar__cta">
             Kontakta oss
           </Link>
-          <DotsMenu />
         </div>
       </header>
     </>
