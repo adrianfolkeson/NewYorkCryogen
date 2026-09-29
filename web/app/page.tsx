@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <main id="main">
       {/* HERO */}
-      <section className="hero hero--dark">
-        <div className="hero__stage">
+      <section className="hero">
+        <div className="wrap hero__grid">
           <div className="hero__copy">
             <p className="eyebrow reveal">Medicinsk högtryckskryoterapi · Nu i Sverige</p>
             <h1 className="reveal">Riktad kyla med kirurgisk precision.</h1>
