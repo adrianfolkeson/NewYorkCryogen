@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Familjen_Grotesk, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     locale: "sv_SE",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f7f9fc",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

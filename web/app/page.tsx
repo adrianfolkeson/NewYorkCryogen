@@ -1,3 +1,4 @@
+import { MobileMenu } from "@/components/MobileMenu";
 import { Photo } from "@/components/Photo";
 import {
   contraindications,
@@ -34,9 +35,10 @@ export default function Home() {
             <a href="#sakerhet">Säkerhet</a>
             <a href="#kliniken">För kliniken</a>
           </nav>
-          <a href="#kontakt" className="btn btn--small">
+          <a href="#kontakt" className="btn btn--small topbar__cta">
             Kontakta oss
           </a>
+          <MobileMenu />
         </div>
       </header>
 
@@ -558,6 +560,15 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      <div className="actionbar" aria-label="Snabbkontakt">
+        <a href={contact.phoneHref} className="btn">
+          Ring {contact.name.split(" ")[0]}
+        </a>
+        <a href={`mailto:${contact.email}`} className="btn btn--ghost">
+          Mejla oss
+        </a>
+      </div>
     </>
   );
 }
