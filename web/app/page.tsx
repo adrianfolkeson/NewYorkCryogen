@@ -231,8 +231,8 @@ export default function Home() {
         <section id="metoden" className="section section--tint" aria-labelledby="met-h">
           <div className="wrap feature feature--reverse">
             <Photo
-              file="treatment-shoulder.jpg"
-              alt="Axelbehandling med AC-130 Viper och pekskärm med sessionstimer"
+              file="clinic-chair.jpg"
+              alt="Behandlingsstol och CO₂-tankar i en klinik"
               className="feature__photo"
               sizes="(max-width: 900px) 100vw, 45vw"
             />
