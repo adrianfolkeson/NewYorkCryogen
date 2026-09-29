@@ -1525,3 +1525,205 @@ a {
     gap: var(--space-2xl);
   }
 }
+
+/* ─── Read more ──────────────────────────────────────── */
+.more {
+  margin-top: var(--space-lg);
+}
+.more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.more summary::-webkit-details-marker {
+  display: none;
+}
+.more summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 240ms var(--ease-out);
+}
+.more[open] summary::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+.more summary:hover {
+  color: var(--accent-hover);
+}
+.more__open,
+.more[open] .more__closed {
+  display: none;
+}
+.more[open] .more__open {
+  display: inline;
+}
+.more__body {
+  display: grid;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  color: var(--ink-2);
+}
+.more__body .compare {
+  margin-top: var(--space-sm);
+  font-size: 1rem;
+}
+.more__body .compare tbody th {
+  width: 26%;
+}
+.more__body .compare td {
+  width: 37%;
+}
+.more__body .stages {
+  margin-top: 0;
+}
+.more__body .stages ol {
+  grid-template-columns: 1fr 1fr;
+  row-gap: var(--space-xl);
+  margin-top: var(--space-sm);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .more[open] .more__body {
+    animation: rise 420ms var(--ease-out) both;
+  }
+}
+
+/* ─── Teaser band / compact sections ─────────────────── */
+.section--compact {
+  padding-block: clamp(56px, 4vw + 32px, 96px);
+}
+.teaser {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) auto;
+  gap: var(--space-xl) clamp(32px, 4vw, 64px);
+  align-items: end;
+}
+.teaser h2 {
+  max-width: 16ch;
+}
+.teaser__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin: 0;
+}
+.teaser__facts > div {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--ink);
+}
+.teaser__facts dt {
+  font-family: var(--font-ui);
+  font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.teaser__facts dd {
+  margin: var(--space-2xs) 0 0;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+.teaser__cta {
+  white-space: nowrap;
+}
+
+/* ─── Sub page head ──────────────────────────────────── */
+.pagehead {
+  padding-block: clamp(40px, 5vw, 88px) clamp(48px, 5vw, 80px);
+}
+.pagehead h1 {
+  max-width: 14ch;
+  margin-bottom: var(--space-lg);
+}
+.pagehead .lead {
+  max-width: 48ch;
+}
+.crumb {
+  display: inline-flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-2xl);
+  font-family: var(--font-ui);
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.crumb:hover {
+  color: var(--accent);
+}
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-2xl);
+}
+.toc a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.toc a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.aside-note {
+  margin-top: var(--space-lg);
+  font-size: 1rem;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+
+@media (max-width: 1080px) {
+  .teaser {
+    grid-template-columns: 1fr 1fr;
+  }
+  .teaser__cta {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+@media (max-width: 900px) {
+  .teaser {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .teaser__facts {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-md);
+  }
+  .teaser__cta {
+    width: 100%;
+  }
+  .more__body .stages ol {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+  .pagehead {
+    padding-top: var(--space-2xl);
+  }
+  .crumb {
+    margin-bottom: var(--space-xl);
+  }
+}
+.split:has(.more[open]) {
+  align-items: start;
+}

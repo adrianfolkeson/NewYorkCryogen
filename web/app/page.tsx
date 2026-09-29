@@ -1,14 +1,7 @@
-import { MobileMenu } from "@/components/MobileMenu";
+import Link from "next/link";
 import { Photo } from "@/components/Photo";
-import {
-  contraindications,
-  features,
-  indications,
-  practice,
-  protocols,
-  site,
-  stages,
-} from "@/lib/content";
+import { ReadMore, SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { contraindications, features, indications, site, stages } from "@/lib/content";
 
 // Skala 35 °C → 0 °C, vänster till höger.
 const pos = (t: number) => `${((35 - t) / 35) * 100}%`;
@@ -18,29 +11,7 @@ export default function Home() {
   const { contact } = site;
   return (
     <>
-      <a className="skip" href="#main">
-        Hoppa till innehållet
-      </a>
-
-      <header className="topbar">
-        <div className="wrap topbar__inner">
-          <a href="#" className="wordmark" aria-label="New York Cryogen – till toppen">
-            <span className="wordmark__name">New York Cryogen</span>
-            <span className="wordmark__region">Sverige</span>
-          </a>
-          <nav aria-label="Huvudmeny" className="nav">
-            <a href="#tekniken">Tekniken</a>
-            <a href="#metoden">Metoden</a>
-            <a href="#protokoll">Protokoll</a>
-            <a href="#sakerhet">Säkerhet</a>
-            <a href="#kliniken">För kliniken</a>
-          </nav>
-          <a href="#kontakt" className="btn btn--small topbar__cta">
-            Kontakta oss
-          </a>
-          <MobileMenu />
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="main">
         {/* HERO */}
@@ -57,9 +28,9 @@ export default function Home() {
                 <a href="#kontakt" className="btn">
                   Boka en genomgång
                 </a>
-                <a href="#protokoll" className="textlink">
+                <Link href="/protokoll" className="textlink">
                   Läs behandlingsprotokollet <span aria-hidden>→</span>
-                </a>
+                </Link>
               </div>
             </div>
             <Photo
@@ -93,59 +64,91 @@ export default function Home() {
           </div>
         </section>
 
-        {/* VAD ÄR HPMC */}
+        {/* VAD ÄR HPMC + TEMPERATURFÖNSTER */}
         <section className="section" aria-labelledby="hpmc-h">
-          <div className="wrap split">
-            <div className="split__head">
-              <p className="eyebrow">Vad är HPMC?</p>
-              <h2 id="hpmc-h">Kyla som når djupare än ytan.</h2>
-            </div>
-            <div className="prose">
-              <p>
-                Medicinsk högtryckskryoterapi (HPMC) minskar vävnadsinflammation – en av de vanligaste
-                orsakerna till smärta och muskuloskeletala besvär – genom snabb och kontrollerad kylning.
-              </p>
-              <p>
-                Traditionell kryoterapi med flytande kväve eller kall luft verkar huvudsakligen ytligt.
-                HPMC håller i stället huden på en exakt temperatur tillräckligt länge för att kylan ska
-                tränga ner i djupare vävnad.
-              </p>
-            </div>
-          </div>
-
           <div className="wrap">
-            <table className="compare">
-              <caption className="visually-hidden">Jämförelse mellan traditionell kryoterapi och HPMC</caption>
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Traditionell kryoterapi</th>
-                  <th scope="col">HPMC med {site.product}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Kylmedium</th>
-                  <td>Flytande kväve eller kall luft</td>
-                  <td>CO₂ under högt tryck</td>
-                </tr>
-                <tr>
-                  <th scope="row">Verkan</th>
-                  <td>Huvudsakligen ytlig</td>
-                  <td>Skiktad kylning, ytligt och på djupet</td>
-                </tr>
-                <tr>
-                  <th scope="row">Precision</th>
-                  <td>Kyler ett större område</td>
-                  <td>Riktad, konformad stråle mot målområdet</td>
-                </tr>
-                <tr>
-                  <th scope="row">Styrning</th>
-                  <td>Tid och känsla</td>
-                  <td>Hudtemperatursensor och termografi</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="split split--tight">
+              <div className="split__head">
+                <p className="eyebrow">Vad är HPMC?</p>
+                <h2 id="hpmc-h">Kallt nog att verka. Aldrig så kallt att det skadar.</h2>
+              </div>
+              <div className="prose">
+                <p>
+                  Medicinsk högtryckskryoterapi håller huden på en exakt temperatur tillräckligt länge för
+                  att kylan ska nå djupare vävnad – där traditionell kryoterapi med kväve eller kall luft
+                  huvudsakligen verkar ytligt.
+                </p>
+                <ReadMore label="Läs mer om metoden">
+                  <p>
+                    HPMC minskar vävnadsinflammation, en av de vanligaste orsakerna till smärta och
+                    muskuloskeletala besvär. Huden hålls kring 1,7 °C: tillräckligt lågt för att minska
+                    inflammation och smärta, utan hudirritation eller frostskador som kan uppstå under den
+                    nivån.
+                  </p>
+                  <p>
+                    Penetrationsdjupet ökar med tiden i fönstret. Därför fortsätter appliceringen även efter
+                    att målvärdet nåtts – det ger en skiktad kyleffekt, både ytligt och på djupet.
+                  </p>
+                  <table className="compare">
+                    <caption className="visually-hidden">
+                      Jämförelse mellan traditionell kryoterapi och HPMC
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Traditionell</th>
+                        <th scope="col">HPMC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Kylmedium</th>
+                        <td>Flytande kväve eller kall luft</td>
+                        <td>CO₂ under högt tryck</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Verkan</th>
+                        <td>Huvudsakligen ytlig</td>
+                        <td>Ytligt och på djupet</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Precision</th>
+                        <td>Kyler ett större område</td>
+                        <td>Riktad, konformad stråle</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Styrning</th>
+                        <td>Tid och känsla</td>
+                        <td>Hudsensor och termografi</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ReadMore>
+              </div>
+            </div>
+
+            <figure className="scale" aria-labelledby="scale-cap">
+              <div className="scale__track">
+                <div className="scale__window" style={{ left: pos(6.11), right: `calc(100% - ${pos(1.66)})` }}>
+                  <span className="scale__label">1,7–6,1 °C</span>
+                </div>
+                <div className="scale__frost" style={{ left: pos(1.66) }} />
+                <div className="scale__marker" style={{ left: pos(33) }}>
+                  <span>Normal hud ≈ 33 °C</span>
+                </div>
+              </div>
+              <ol className="scale__ticks" aria-hidden>
+                {ticks.map((t) => (
+                  <li key={t} style={{ left: pos(t) }}>
+                    {t}°
+                  </li>
+                ))}
+              </ol>
+              <figcaption id="scale-cap" className="scale__legend">
+                <span className="key key--window">Terapeutiskt fönster</span>
+                <span className="key key--frost">Under 1,7 °C: risk för frostskada</span>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -173,64 +176,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TEMPERATURFÖNSTER */}
-        <section className="section" aria-labelledby="temp-h">
-          <div className="wrap">
-            <div className="split split--tight">
-              <div className="split__head">
-                <p className="eyebrow">Det terapeutiska fönstret</p>
-                <h2 id="temp-h">Kallt nog att verka. Aldrig så kallt att det skadar.</h2>
-              </div>
-              <div className="prose">
-                <p>
-                  Huden hålls kring 1,7 °C under behandlingen. Det är tillräckligt lågt för att minska
-                  inflammation och smärta, utan hudirritation eller frostskador som kan uppstå under den
-                  nivån. Penetrationsdjupet ökar med tiden i fönstret – därför fortsätter appliceringen
-                  även efter att målvärdet nåtts.
-                </p>
-              </div>
-            </div>
-
-            <figure className="scale" aria-labelledby="scale-cap">
-              <div className="scale__track">
-                <div className="scale__window" style={{ left: pos(6.11), right: `calc(100% - ${pos(1.66)})` }}>
-                  <span className="scale__label">1,7–6,1 °C</span>
-                </div>
-                <div className="scale__frost" style={{ left: pos(1.66) }} />
-                <div className="scale__marker" style={{ left: pos(33) }}>
-                  <span>Normal hud ≈ 33 °C</span>
-                </div>
-              </div>
-              <ol className="scale__ticks" aria-hidden>
-                {ticks.map((t) => (
-                  <li key={t} style={{ left: pos(t) }}>
-                    {t}°
-                  </li>
-                ))}
-              </ol>
-              <figcaption id="scale-cap" className="scale__legend">
-                <span className="key key--window">Terapeutiskt fönster</span>
-                <span className="key key--frost">Under 1,7 °C: risk för frostskada</span>
-              </figcaption>
-            </figure>
-
-            <div className="stages">
-              <h3 className="stages__title">Fyra fysiologiska stadier styr behandlingstiden</h3>
-              <ol>
-                {stages.map((s, i) => (
-                  <li key={s.name}>
-                    <span className="stages__n">0{i + 1}</span>
-                    <strong>{s.name}</strong>
-                    <p>{s.text}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
         {/* METODEN */}
-        <section id="metoden" className="section section--tint" aria-labelledby="met-h">
+        <section id="metoden" className="section" aria-labelledby="met-h">
           <div className="wrap feature feature--reverse">
             <Photo
               file="clinic-chair.jpg"
@@ -241,42 +188,48 @@ export default function Home() {
             <div className="feature__body">
               <p className="eyebrow">Metoden</p>
               <h2 id="met-h">Mät. Behandla. Följ upp.</h2>
-              <p className="prose-lead">
-                Termografi är en central del av protokollet. Utöver den integrerade sensorn övervakar
-                termografikameran omgivande hud – före, under och efter.
-              </p>
               <ol className="steps">
                 <li>
                   <span className="steps__n">01</span>
                   <div>
                     <h3>Före</h3>
-                    <p>Termografibild identifierar områden med uttalad inflammation och bekräftar smärtområdet.</p>
+                    <p>Termografibild identifierar inflammation och bekräftar smärtområdet.</p>
                   </div>
                 </li>
                 <li>
                   <span className="steps__n">02</span>
                   <div>
                     <h3>Under</h3>
-                    <p>Hudtemperaturen övervakas och appliceringen anpassas efter behandlingsområdet.</p>
+                    <p>Hudtemperaturen övervakas och appliceringen anpassas efter området.</p>
                   </div>
                 </li>
                 <li>
                   <span className="steps__n">03</span>
                   <div>
                     <h3>Efter</h3>
-                    <p>
-                      Efterbild bekräftar uppnådd temperatur. Mörkblått i termografin inom fönstret indikerar
-                      optimal penetration.
-                    </p>
+                    <p>Efterbild bekräftar att optimal temperatur och penetration nåtts.</p>
                   </div>
                 </li>
               </ol>
+              <ReadMore label="Fyra stadier styr behandlingstiden">
+                <div className="stages">
+                  <ol>
+                    {stages.map((s, i) => (
+                      <li key={s.name}>
+                        <span className="stages__n">0{i + 1}</span>
+                        <strong>{s.name}</strong>
+                        <p>{s.text}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </ReadMore>
             </div>
           </div>
         </section>
 
         {/* INDIKATIONER */}
-        <section id="indikationer" className="section" aria-labelledby="ind-h">
+        <section id="indikationer" className="section section--tint" aria-labelledby="ind-h">
           <div className="wrap">
             <div className="split split--tight">
               <div className="split__head">
@@ -284,8 +237,8 @@ export default function Home() {
                 <h2 id="ind-h">Ett system – flera behandlingsområden.</h2>
               </div>
               <p className="prose">
-                Korta behandlingstider och en bred indikationslista gör att tjänsten kan integreras i en
-                befintlig fysioterapi-, naprapat- eller idrottsmedicinsk verksamhet.
+                Korta behandlingstider och bred användning gör att tjänsten passar in i en befintlig
+                fysioterapi-, naprapat- eller idrottsmedicinsk verksamhet.
               </p>
             </div>
             <div className="indications">
@@ -303,90 +256,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROTOKOLL */}
-        <section id="protokoll" className="section section--tint" aria-labelledby="pro-h">
-          <div className="wrap protocol">
-            <div className="protocol__aside">
-              <p className="eyebrow">Behandlingsprotokoll</p>
-              <h2 id="pro-h">Strukturerat från första sessionen.</h2>
-              <p className="prose-lead">Sammanfattning av tillverkarens behandlingsalgoritm.</p>
-              <dl className="params">
-                <div>
-                  <dt>Behandlingstid</dt>
-                  <dd>2–6 min, i snitt 3–5</dd>
-                </div>
-                <div>
-                  <dt>Frekvens</dt>
-                  <dd>Dagligen eller varannan dag</dd>
-                </div>
-                <div>
-                  <dt>Antal behandlingar</dt>
-                  <dd>Optimalt resultat vanligtvis efter 3–4</dd>
-                </div>
-                <div>
-                  <dt>Hudskydd</dt>
-                  <dd>Obligatoriskt – Viper Skin eller 3M Ioban</dd>
-                </div>
-              </dl>
+        {/* FÖR BEHANDLARE – teaser till protokollsidan */}
+        <section className="section section--compact" aria-labelledby="pro-h">
+          <div className="wrap teaser">
+            <div>
+              <p className="eyebrow">För behandlare</p>
+              <h2 id="pro-h">Protokoll och säkerhet, samlat på ett ställe.</h2>
             </div>
-
-            <div className="protocol__list">
-              {protocols.map((p) => (
-                <details key={p.region}>
-                  <summary>
-                    <span className="protocol__region">{p.region}</span>
-                    <span className="protocol__time">{p.time}</span>
-                  </summary>
-                  <ul>
-                    {p.points.map((pt) => (
-                      <li key={pt}>{pt}</li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-              <div className="skin">
-                <h3>Varför hudskydd?</h3>
-                <p>
-                  Skyddsskiktet skyddar mot termisk chock, gör huden vattentät så att kondens inte bildas,
-                  och möjliggör högre tryck för djupare penetration. <em>Translucent Viper Skin</em> är
-                  återanvändbar och formbar; 3M Ioban är ett engångsalternativ.
-                </p>
+            <dl className="teaser__facts">
+              <div>
+                <dt>9</dt>
+                <dd>Protokoll per kroppsregion</dd>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SÄKERHET */}
-        <section id="sakerhet" className="section" aria-labelledby="sak-h">
-          <div className="wrap">
-            <div className="split split--tight">
-              <div className="split__head">
-                <p className="eyebrow">Säkerhet</p>
-                <h2 id="sak-h">Tydliga gränser för när behandlingen inte ges.</h2>
+              <div>
+                <dt>3–4</dt>
+                <dd>Behandlingar till optimalt resultat</dd>
               </div>
-              <p className="prose">
-                Behandling ska utföras av utbildad personal enligt gällande protokoll, kontraindikationer och
-                professionell bedömning.
-              </p>
-            </div>
-            <div className="safety">
-              <div className="safety__col">
-                <h3>Kontraindikationer</h3>
-                <ol className="contra">
-                  {contraindications.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ol>
+              <div>
+                <dt>{contraindications.length}</dt>
+                <dd>Tydliga kontraindikationer</dd>
               </div>
-              <div className="safety__col">
-                <h3>Inför varje behandling</h3>
-                <ul className="checklist">
-                  {practice.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            </dl>
+            <Link href="/protokoll" className="btn teaser__cta">
+              Se behandlingsprotokollet <span aria-hidden>→</span>
+            </Link>
           </div>
         </section>
 
@@ -403,8 +296,7 @@ export default function Home() {
               <p className="eyebrow">Ny utveckling</p>
               <h2 id="noz-h">Mer precist kalibrerat munstycke.</h2>
               <p className="prose-lead">
-                Det nya blå munstycket är framtaget för att använda mindre gas från tanken – utan att ge
-                avkall på precisionen.
+                Det nya blå munstycket använder mindre gas från tanken – utan att ge avkall på precisionen.
               </p>
               <dl className="duo">
                 <div>
@@ -413,7 +305,7 @@ export default function Home() {
                 </div>
                 <div>
                   <dt>Mindre gas</dt>
-                  <dd>Lägre driftkostnad och ett effektivare klinikflöde</dd>
+                  <dd>Lägre driftkostnad, effektivare klinikflöde</dd>
                 </div>
               </dl>
               <p className="fine">Exakt förbrukning varierar med behandlingsområde och protokoll.</p>
@@ -433,16 +325,12 @@ export default function Home() {
             <div className="feature__body">
               <p className="eyebrow">För kliniken</p>
               <h2 id="kli-h">Teknik och löpande drift i samma upplägg.</h2>
-              <p className="prose-lead">
-                En ny behandling att addera till klinikens erbjudande – enkel att komma igång med och enkel
-                att fortsätta använda.
-              </p>
               <ol className="steps steps--compact">
                 <li>
                   <span className="steps__n">01</span>
                   <div>
                     <h3>Tank ingår vid köp</h3>
-                    <p>Systemet levereras med en CO₂-tank så att ni kan börja behandla direkt.</p>
+                    <p>Kom igång och behandla direkt.</p>
                   </div>
                 </li>
                 <li>
@@ -456,7 +344,7 @@ export default function Home() {
                   <span className="steps__n">03</span>
                   <div>
                     <h3>Kontinuitet</h3>
-                    <p>Återkommande leveranser – ni slipper hantera inköp av förbrukning själva.</p>
+                    <p>Ni slipper hantera inköp av förbrukning själva.</p>
                   </div>
                 </li>
               </ol>
@@ -472,8 +360,7 @@ export default function Home() {
               <p className="eyebrow">Nyfiken på hur det passar er verksamhet?</p>
               <h2 id="kon-h">Låt oss ta nästa steg.</h2>
               <p className="prose-lead">
-                Vi berättar gärna mer om systemet, behandlingsupplägget och den kommersiella lösningen för er
-                klinik.
+                Vi berättar gärna mer om systemet, behandlingsupplägget och den kommersiella lösningen.
               </p>
 
               <div className="person">
@@ -484,11 +371,9 @@ export default function Home() {
                   <a href={contact.phoneHref} className="btn">
                     Ring {contact.phone}
                   </a>
-                  {contact.email && (
-                    <a href={`mailto:${contact.email}`} className="btn btn--ghost">
-                      {contact.email}
-                    </a>
-                  )}
+                  <a href={`mailto:${contact.email}`} className="btn btn--ghost">
+                    {contact.email}
+                  </a>
                 </div>
               </div>
 
@@ -545,30 +430,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="wrap footer__inner">
-          <div>
-            <p className="wordmark__name">New York Cryogen</p>
-            <p className="footer__muted">
-              {site.company} · Svensk distributions- och leveranspartner för New York Cryogen
-            </p>
-            <p className="footer__muted">Org.nr {site.orgNr}</p>
-          </div>
-          <p className="footer__disclaimer">
-            Informationen riktar sig till vårdgivare och kliniker. Behandling ska utföras enligt gällande
-            protokoll, kontraindikationer och professionell bedömning.
-          </p>
-        </div>
-      </footer>
-
-      <div className="actionbar" aria-label="Snabbkontakt">
-        <a href={contact.phoneHref} className="btn">
-          Ring {contact.name.split(" ")[0]}
-        </a>
-        <a href={`mailto:${contact.email}`} className="btn btn--ghost">
-          Mejla oss
-        </a>
-      </div>
+      <SiteFooter />
     </>
   );
 }
