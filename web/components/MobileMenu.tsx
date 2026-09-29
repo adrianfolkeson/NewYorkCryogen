@@ -1,11 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type NavLink = { href: string; label: string };
+const links = [
+  { href: "#tekniken", label: "Tekniken" },
+  { href: "#metoden", label: "Metoden" },
+  { href: "#indikationer", label: "Användning" },
+  { href: "#protokoll", label: "Protokoll" },
+  { href: "#sakerhet", label: "Säkerhet" },
+  { href: "#kliniken", label: "För kliniken" },
+  { href: "#kontakt", label: "Kontakt" },
+];
 
-export function MobileMenu({ links }: { links: NavLink[] }) {
+export function MobileMenu() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -35,10 +42,10 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
         <ol>
           {links.map((l, i) => (
             <li key={l.href}>
-              <Link href={l.href} onClick={() => setOpen(false)}>
+              <a href={l.href} onClick={() => setOpen(false)}>
                 <span className="mmenu__n">0{i + 1}</span>
                 {l.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ol>
