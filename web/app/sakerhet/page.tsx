@@ -5,7 +5,7 @@ import { contraindications, practice } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Säkerhet & Kontraindikationer – AC-130 Viper | New York Cryogen Sverige",
   description:
-    "Kontraindikationer och säkerhetsrutiner för medicinsk högtryckskryoterapi med AC-130 Viper.",
+    "Kontraindikationer och säkerhetsrutiner för högtryckskryoterapi med AC-130 Viper.",
 };
 
 export default function Sakerhet() {

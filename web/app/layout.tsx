@@ -15,11 +15,11 @@ const serif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "AC-130 Viper – Medicinsk högtryckskryoterapi | New York Cryogen Sverige",
+  title: "AC-130 Viper – Högtryckskryoterapi | New York Cryogen Sverige",
   description:
     "AC-130 Viper från New York Cryogen: riktad högtryckskryoterapi med CO₂ för kliniker. 3–5 minuters behandling, integrerad hudtemperatursensor och löpande CO₂-leverans.",
   openGraph: {
-    title: "AC-130 Viper – Medicinsk högtryckskryoterapi",
+    title: "AC-130 Viper – Högtryckskryoterapi",
     description: "Riktad kyla med kirurgisk precision. Nu i Sverige genom Aurora Ecom AB.",
     locale: "sv_SE",
     type: "website",

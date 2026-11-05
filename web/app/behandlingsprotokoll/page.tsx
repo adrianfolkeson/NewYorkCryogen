@@ -5,7 +5,7 @@ import { protocols } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Behandlingsprotokoll – AC-130 Viper | New York Cryogen Sverige",
   description:
-    "Behandlingsparametrar och protokoll per kroppsregion för medicinsk högtryckskryoterapi med AC-130 Viper.",
+    "Behandlingsparametrar och protokoll per kroppsregion för högtryckskryoterapi med AC-130 Viper.",
 };
 
 export default function Behandlingsprotokoll() {
@@ -14,7 +14,7 @@ export default function Behandlingsprotokoll() {
       <PageHead
         eyebrow="För behandlare"
         title="Behandlingsprotokoll"
-        lead="Sammanfattning av tillverkarens behandlingsalgoritm för medicinsk högtryckskryoterapi."
+        lead="Sammanfattning av tillverkarens behandlingsalgoritm för högtryckskryoterapi."
       />
 
       <section className="section section--tint" aria-labelledby="pro-h">

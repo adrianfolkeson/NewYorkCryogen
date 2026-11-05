@@ -14,7 +14,7 @@ export default function Behandlingsomraden() {
       <PageHead
         eyebrow="Ett system – flera behandlingsområden"
         title="Behandlingsområden"
-        lead="Korta behandlingstider och en bred indikationslista gör att tjänsten kan integreras i en befintlig fysioterapi-, naprapat- eller idrottsmedicinsk verksamhet."
+        lead="Korta behandlingstider och en bred indikationslista gör att tjänsten kan integreras i en befintlig fysioterapi-, naprapat- eller idrottsverksamhet."
       />
 
       <section className="section section--flush-top" aria-label="Tillstånd som behandlas">

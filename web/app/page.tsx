@@ -14,7 +14,7 @@ export default function Home() {
       <section className="hero">
         <div className="wrap hero__grid">
           <div className="hero__copy">
-            <p className="eyebrow reveal">Medicinsk högtryckskryoterapi · Nu i Sverige</p>
+            <p className="eyebrow reveal">Högtryckskryoterapi · Nu i Sverige</p>
             <h1 className="reveal">Riktad kyla med kirurgisk precision.</h1>
             <p className="lead reveal">
               {site.product} levererar koldioxid under högt tryck och kyler vävnaden kontrollerat ner
@@ -69,8 +69,7 @@ export default function Home() {
           </div>
           <div className="prose">
             <p>
-              Medicinsk högtryckskryoterapi (HPMC) minskar vävnadsinflammation – en av de vanligaste
-              orsakerna till smärta och muskuloskeletala besvär – genom snabb och kontrollerad kylning.
+              Högtryckskryoterapi (HPMC) – kontrollerad kylteknik med hög precision.
             </p>
             <p>
               Traditionell kryoterapi med flytande kväve eller kall luft verkar huvudsakligen ytligt.
